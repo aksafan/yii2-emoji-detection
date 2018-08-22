@@ -4,7 +4,7 @@
     "keywords": ["yii2", "emoji", "detection"],
     "homepage": "https://github.com/aksafan/yii2-emoji-detection",
     "type": "yii2-extension",
-    "license": "MIT License",
+    "license": "MIT",
     "support": {
         "issues": "https://github.com/aksafan/yii2-emoji-detection/issues?q=is%3Aopen",
         "forum": "http://www.yiiframework.com/forum/",
