@@ -36,7 +36,7 @@ return [
     //....
     'components' => [
         'emojiDetector' => [
-             'class' => 'common\components\EmojiDetector',
+             'class' => 'aksafan\emoji\source\EmojiDetector\EmojiDetector',
         ],
     ]
 ];
@@ -49,7 +49,7 @@ Also add this to your Yii.php file in the root directory of the project for IDE 
  * Class WebApplication
  * Include only Web application related components here.
  *
- * @property \common\components\EmojiDetector $emojiDetector
+ * @property \aksafan\emoji\source\EmojiDetector $emojiDetector
  */
 class WebApplication extends yii\web\Application
 {
