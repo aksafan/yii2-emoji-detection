@@ -2,6 +2,9 @@
 Yii2 wrapper for aaronpk's Emoji Detection (https://github.com/aaronpk/emoji-detector-php).
 The library provides all aaronpk's Emoji Detection tools and features with various enhancements and Yii2 syntax.
 
+
+[![Latest Stable Version](https://poser.pugx.org/aksafan/yii2-emoji-detection/v/stable)](https://packagist.org/packages/aksafan/yii2-emoji-detection)
+[![Total Downloads](https://poser.pugx.org/aksafan/yii2-emoji-detection/downloads)](https://packagist.org/packages/aksafan/yii2-emoji-detection)
 [![Build Status](https://travis-ci.org/aksafan/yii2-emoji-detection.svg?branch=master)](https://travis-ci.org/aksafan/yii2-emoji-detection)
 
 # Installation
