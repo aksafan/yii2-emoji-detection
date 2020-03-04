@@ -2,15 +2,22 @@
 
 namespace aksafan\emoji\source;
 
+use Emoji\Emoji;
+use function array_key_exists;
+use function count;
+use function in_array;
+use function is_array;
+use function is_string;
+
 class EmojiDetector
 {
-    const EMOJI = 'emoji';
-    const SHORT_NAME = 'short_name';
-    const NUM_POINTS = 'num_points';
-    const POINTS_HEX = 'points_hex';
-    const HEX_STR = 'hex_str';
-    const SKIN_TONE = 'skin_tone';
-    const PARAMS = [
+    public const EMOJI = 'emoji';
+    public const SHORT_NAME = 'short_name';
+    public const NUM_POINTS = 'num_points';
+    public const POINTS_HEX = 'points_hex';
+    public const HEX_STR = 'hex_str';
+    public const SKIN_TONE = 'skin_tone';
+    private const PARAMS = [
         self::EMOJI,
         self::SHORT_NAME,
         self::NUM_POINTS,
@@ -18,6 +25,17 @@ class EmojiDetector
         self::HEX_STR,
         self::SKIN_TONE,
     ];
+
+    /** @var Emoji */
+    private $emojiService;
+
+    /**
+     * EmojiDetector constructor.
+     */
+    public function __construct()
+    {
+        $this->emojiService = new Emoji();
+    }
 
     /**
      * Detects all emojis in the given string and returns all details about them.
@@ -28,9 +46,9 @@ class EmojiDetector
      */
     public function detectAll(string $string): array
     {
-        $emojis = \Emoji\detect_emoji($string);
+        $emojis = $this->emojiService->detectEmoji($string);
 
-        return \is_array($emojis) ? $emojis : [];
+        return is_array($emojis) ? $emojis : [];
     }
 
     /**
@@ -46,7 +64,7 @@ class EmojiDetector
     public function detectAllWIthSingleParam(string $string, string $param): array
     {
         $result = [];
-        if (! \in_array($param, self::PARAMS, true) || empty($emojis = $this->detectAll($string))) {
+        if (! in_array($param, self::PARAMS, true) || empty($emojis = $this->detectAll($string))) {
             return $result;
         }
 
@@ -80,7 +98,7 @@ class EmojiDetector
             }
         }
 
-        return \is_string($stringToChange) ? $stringToChange : $string;
+        return is_string($stringToChange) ? $stringToChange : $string;
     }
 
     /**
@@ -92,7 +110,7 @@ class EmojiDetector
      */
     public function countEmojis(string $string): int
     {
-        return \count($this->detectAll($string));
+        return count($this->detectAll($string));
     }
 
     /**
@@ -116,7 +134,7 @@ class EmojiDetector
      */
     public function isSingleEmoji(string $string): bool
     {
-        return (bool) \Emoji\is_single_emoji($string);
+        return (bool) $this->emojiService->isSingleEmoji($string);
     }
 
     /**
@@ -128,9 +146,9 @@ class EmojiDetector
      */
     public function getEmojiMap(): array
     {
-        $map = \Emoji\_load_map();
+        $map = $this->emojiService->loadMap();
 
-        return \is_array($map) ? $map : [];
+        return is_array($map) ? $map : [];
     }
 
     /**
@@ -140,8 +158,8 @@ class EmojiDetector
      */
     public function getEmojiRegexp(): string
     {
-        $regexp = \Emoji\_load_regexp();
+        $regexp = $this->emojiService->loadRegexp();
 
-        return \is_string($regexp) ? $regexp : '';
+        return is_string($regexp) ? $regexp : '';
     }
 }

@@ -146,4 +146,13 @@ class DetectAllTests extends TestCase
         $this->assertCount(13, $emoji);
         $this->assertEquals('heavy_plus_sign', $emoji[0]['short_name']);
     }
+
+    public function testDetectMechanicalArmEmoji()
+    {
+        // Added in Jan 2020 https://www.unicode.org/Public/emoji/13.0/emoji-test.txt
+        $string = '🦾';
+        $emoji = $this->emoji->detectAll($string);
+        $this->assertCount(1, $emoji);
+        $this->assertSame('mechanical_arm', $emoji[0]['short_name']);
+    }
 }

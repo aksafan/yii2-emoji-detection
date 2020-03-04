@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aad58a419c36988f430fbdffe627033a",
+    "content-hash": "a1ce19ddf2761bfdd66dfe2887b29da2",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -267,23 +267,25 @@
         },
         {
             "name": "p3k/emoji-detector",
-            "version": "0.2.1",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/aaronpk/emoji-detector-php.git",
-                "reference": "fb0765845e554f04ccd2b594a7ab8ca44d804bab"
+                "url": "https://github.com/aksafan/emoji-detector-php.git",
+                "reference": "2549fa851965e3ccd964b3566c7a40c9ca4e26c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aaronpk/emoji-detector-php/zipball/fb0765845e554f04ccd2b594a7ab8ca44d804bab",
-                "reference": "fb0765845e554f04ccd2b594a7ab8ca44d804bab",
+                "url": "https://api.github.com/repos/aksafan/emoji-detector-php/zipball/2549fa851965e3ccd964b3566c7a40c9ca4e26c8",
+                "reference": "2549fa851965e3ccd964b3566c7a40c9ca4e26c8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3"
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=7.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.8"
+                "phpunit/phpunit": "^4.8"
             },
             "type": "library",
             "autoload": {
@@ -291,7 +293,6 @@
                     "src/Emoji.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -304,7 +305,10 @@
             ],
             "description": "Detect and return all emoji found in a string",
             "homepage": "https://github.com/aaronpk/emoji-detector-php",
-            "time": "2017-11-30T21:02:53+00:00"
+            "support": {
+                "source": "https://github.com/aksafan/emoji-detector-php/tree/1.0.1"
+            },
+            "time": "2020-03-04T15:05:45+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -1271,6 +1275,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2018-08-09T05:50:03+00:00"
         },
         {
@@ -1929,7 +1934,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.0"
+        "php": ">=7.1"
     },
     "platform-dev": []
 }
