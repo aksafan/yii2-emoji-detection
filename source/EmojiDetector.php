@@ -2,11 +2,9 @@
 
 namespace aksafan\emoji\source;
 
-use Emoji\Emoji;
 use function array_key_exists;
 use function count;
 use function in_array;
-use function is_array;
 use function is_string;
 
 class EmojiDetector
@@ -26,15 +24,11 @@ class EmojiDetector
         self::SKIN_TONE,
     ];
 
-    /** @var Emoji */
-    private $emojiService;
+    private EmojiWrapper $emojiService;
 
-    /**
-     * EmojiDetector constructor.
-     */
     public function __construct()
     {
-        $this->emojiService = new Emoji();
+        $this->emojiService = new EmojiWrapper();
     }
 
     /**
@@ -46,9 +40,7 @@ class EmojiDetector
      */
     public function detectAll(string $string): array
     {
-        $emojis = $this->emojiService->detectEmoji($string);
-
-        return is_array($emojis) ? $emojis : [];
+        return $this->emojiService->detectEmoji($string);
     }
 
     /**
@@ -64,7 +56,7 @@ class EmojiDetector
     public function detectAllWIthSingleParam(string $string, string $param): array
     {
         $result = [];
-        if (! in_array($param, self::PARAMS, true) || empty($emojis = $this->detectAll($string))) {
+        if (!in_array($param, self::PARAMS, true) || empty($emojis = $this->detectAll($string))) {
             return $result;
         }
 
@@ -122,7 +114,7 @@ class EmojiDetector
      */
     public function isEmoji(string $string): bool
     {
-        return ! empty($this->detectAll($string));
+        return (bool) $this->detectAll($string);
     }
 
     /**
@@ -146,9 +138,7 @@ class EmojiDetector
      */
     public function getEmojiMap(): array
     {
-        $map = $this->emojiService->loadMap();
-
-        return is_array($map) ? $map : [];
+        return $this->emojiService->loadMap();
     }
 
     /**
@@ -158,8 +148,6 @@ class EmojiDetector
      */
     public function getEmojiRegexp(): string
     {
-        $regexp = $this->emojiService->loadRegexp();
-
-        return is_string($regexp) ? $regexp : '';
+        return $this->emojiService->loadRegexp();
     }
 }

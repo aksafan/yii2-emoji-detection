@@ -155,4 +155,18 @@ class DetectAllTests extends TestCase
         $this->assertCount(1, $emoji);
         $this->assertSame('mechanical_arm', $emoji[0]['short_name']);
     }
+
+    public function testDetectEmoji14()
+    {
+        // Emoji 14. Added in 2021 https://www.unicode.org/emoji/charts-14.0/emoji-versions.html
+        $string = '🫠';
+        $emoji = $this->emoji->detectAll($string);
+        $this->assertCount(1, $emoji);
+        $this->assertSame('melting_face', $emoji[0]['short_name']);
+
+        $string = '🪫';
+        $emoji = $this->emoji->detectAll($string);
+        $this->assertCount(1, $emoji);
+        $this->assertSame('low_battery', $emoji[0]['short_name']);
+    }
 }
