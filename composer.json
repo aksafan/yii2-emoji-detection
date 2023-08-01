@@ -1,7 +1,11 @@
 {
     "name": "aksafan/yii2-emoji-detection",
     "description": "Yii2 wrapper for aaronpk's Emoji Detection",
-    "keywords": ["yii2", "emoji", "detection"],
+    "keywords": [
+        "yii2",
+        "emoji",
+        "detection"
+    ],
     "homepage": "https://github.com/aksafan/yii2-emoji-detection",
     "type": "yii2-extension",
     "license": "MIT",
@@ -21,7 +25,7 @@
     "minimum-stability": "stable",
     "require": {
         "php": "^8.0",
-        "yiisoft/yii2": "~2.0.6",
+        "yiisoft/yii2": ">=2.0.47",
         "p3k/emoji-detector": "^1",
         "ext-json": "*",
         "ext-mbstring": "*"
